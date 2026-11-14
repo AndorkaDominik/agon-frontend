@@ -1,0 +1,91 @@
+.board {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 210px;
+  grid-template-areas: 'avatar identity overall';
+  gap: 1.2rem 1.5rem;
+  align-items: center;
+}
+
+.avatarSlot {
+  grid-area: avatar;
+  justify-self: center;
+}
+
+.avatar {
+  width: 230px;
+  height: 230px;
+  border: 2px solid var(--accent-9);
+  box-shadow: 0 4px 40px var(--accent-a5);
+}
+
+.levelBadge {
+  background: var(--accent-surface);
+  color: var(--accent-11);
+  border: 2px solid var(--accent-6);
+}
+
+.identity { 
+  grid-area: identity; 
+  min-width: 0; 
+}
+
+.animalName {
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  line-height: 1;
+  font-size: clamp(2.5rem, 4vw, 7rem);
+}
+
+.motto { 
+  margin-top: 1.2rem; 
+  text-transform: uppercase; 
+}
+
+.overall {
+  grid-area: overall;
+  min-width: 0;
+  padding: 0.5rem 1rem;
+  border-left: 1px solid var(--gray-a5);
+}
+
+.overallLabel {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  padding-left: 0.3em;
+}
+
+.overallValue {
+  margin: 0;
+  color: var(--accent-11);
+  font-size: clamp(6rem, 10vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 30px var(--accent-a5);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1120px) {
+  .board {
+    grid-template-columns: 200px minmax(0, 1fr) 180px;
+    gap: 1rem;
+  }
+  .avatar { width: 180px; height: 180px; }
+}
+
+@media (max-width: 640px) {
+  .board {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'avatar' 'identity' 'overall';
+  }
+  .identity { text-align: center; }
+  .overall {
+    border-left: 0;
+    border-top: 1px solid var(--gray-a5);
+    padding-top: 1.5rem;
+  }
+}

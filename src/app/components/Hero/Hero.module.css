@@ -1,0 +1,28 @@
+.heroRoot {
+  min-height: 100vh;
+  background-color: var(--bg);
+}
+
+.heroLeft {
+  max-width: 560px;
+}
+
+.heroTitle {
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.heroDescription {
+  line-height: 1.6;
+}
+
+.sessionMessage {
+  text-align: right;
+  line-height: 1.05;
+}
+
+@media (max-width: 767px) {
+  .sessionMessage {
+    text-align: left;
+  }
+}

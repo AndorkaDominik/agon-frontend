@@ -1,0 +1,22 @@
+.navLink {
+  color: var(--text);
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s;
+}
+
+.navLink:hover {
+  background-color: rgb(39 39 42 / 0.5);
+  text-decoration: none;
+}
+
+.navLinkActive {
+  background-color: rgb(39 39 42 / 0.7);
+  color: var(--accent-11);
+}
+
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}

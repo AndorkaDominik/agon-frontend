@@ -1,0 +1,75 @@
+.userTypeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.userTypeOption {
+  position: relative;
+}
+
+.radioItem {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: rgba(31, 41, 55, 0.5);
+  border: 2px solid #374151;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.radioItem:hover {
+  border-color: #4b5563;
+}
+
+.radioItem[data-state="checked"] {
+  border-color: var(--accent-9);
+  background-color: #1f2937;
+}
+
+.radioContent {
+  text-align: center;
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.radioItem[data-state="checked"]{
+  background: var(--accent-a3);
+}
+
+.optionTitle {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.optionDescription {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.errorMessage {
+  background-color: var(--red-a3);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.footer {
+  text-align: center;
+  color: #9ca3af;
+  margin-top: 1.5rem;
+}

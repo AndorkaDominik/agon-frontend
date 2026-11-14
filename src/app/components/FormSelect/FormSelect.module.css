@@ -1,0 +1,74 @@
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.blockLabel {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.requiredIndicator {
+  color: var(--accent-9);
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.message {
+  color: var(--danger);
+  font-size: 0.78rem;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.select {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.select:focus {
+  border-color: var(--accent-9);
+}
+
+.select:invalid {
+  color: #6b7280;
+}
+
+.select option {
+  color: white;
+  background-color: #1f2937;
+}
+
+.select option:checked,
+.select option:hover,
+.select option:focus {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+
+.icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #9ca3af;
+}

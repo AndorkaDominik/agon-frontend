@@ -1,0 +1,97 @@
+.navWrapper{
+  /* background: rgba(24, 24, 27, 0.8); */
+  background: linear-gradient(#1f2330bf 0%, #171a21c7 100%);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topBar {
+  max-width: 1400px;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.brandLink {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brandHeading {
+  margin: 0;
+  letter-spacing: 0.1rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdownTriggerBox{
+  background-color: unset;
+  height: 32px;
+  border-width: 1px;
+  border-color: var(--accent-9);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dropdownTriggerBox:hover{
+  background-color: rgb(39 39 42 / 0.5);
+	text-decoration: none;
+}
+
+.dropdownmenuContent{
+  font-family: "Segoe UI", sans-serif;
+  background-color: rgba(24, 24, 27);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem;
+  min-width: 160px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dropdownItem {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 0.875rem;
+  outline: none;
+  transition: background-color 0.2s;
+}
+
+.dropdownItem:hover {
+  background-color: rgba(191, 191, 191, 0.1);
+}
+
+.dropdownItemDanger {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--danger);
+  font-size: 0.875rem;
+  outline: none;
+  transition: background-color 0.2s;
+}
+
+.dropdownItemDanger:hover {
+  background-color: rgba(248, 113, 113, 0.1);
+}
+
+@media (max-width: 560px) {
+  .topBar {
+    padding: 0 0.75rem;
+  }
+}

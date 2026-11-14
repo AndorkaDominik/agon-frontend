@@ -1,0 +1,71 @@
+.wrapper {
+  display: grid;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--accent-8);
+  background: var(--accent-a2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.rewards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.term {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.skill {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  background: var(--accent-a3);
+}
+
+.value {
+  min-width: 0;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.operator {
+  color: var(--text-soft);
+  font-size: 1.5rem;
+  padding-top: 1.75rem;
+}
+
+.total {
+  color: var(--accent-11);
+  background: var(--accent-a4);
+}
+
+@media (max-width: 640px) {
+  .rewards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .operator { display: none; }
+}

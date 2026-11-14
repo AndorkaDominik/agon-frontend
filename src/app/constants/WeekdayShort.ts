@@ -1,0 +1,1 @@
+export const WEEKDAY_SHORT = ['Sn', 'M', 'Tu', 'W', 'Th', 'F', 'St'];

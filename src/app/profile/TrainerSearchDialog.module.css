@@ -1,0 +1,104 @@
+.dialogContent {
+  width: min(94vw, 760px);
+  max-width: 760px;
+  max-height: 84vh;
+  padding: 1.25rem;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.9rem;
+}
+
+.description {
+  margin-top: 0.35rem;
+  color: var(--text-soft);
+}
+
+.searchResults {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.9rem;
+  min-height: 0;
+}
+
+.resultsList {
+  overflow-y: auto;
+  min-height: 0;
+  padding-top: 0.9rem;
+  padding-right: 0.2rem;
+  border-top: 1px solid var(--border);
+}
+
+.statusMessage {
+  border: 1px solid var(--border);
+  padding: 1rem;
+}
+
+.softText {
+  color: var(--text-soft);
+}
+
+.trainerButton {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  padding: 0.95rem;
+}
+
+.trainerAvatar {
+  width: 56px;
+  height: 56px;
+}
+
+.trainerName {
+  margin-bottom: 0.15rem;
+}
+
+.athleteCount {
+  margin-top: 0.15rem;
+}
+
+.resultArrow {
+  flex-shrink: 0;
+  margin-right: 0.25rem;
+  color: var(--text-soft);
+}
+
+.requestContent {
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.trainerDetails {
+  border: 1px solid var(--border);
+  padding: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.detailsName {
+  line-height: 1.05;
+}
+
+.introduction {
+  line-height: 1.4;
+}
+
+.messageField {
+  margin-bottom: 1rem;
+}
+
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.formActions > * {
+  flex: 1 1 220px;
+}
+
+.requestError {
+  margin-top: 0.8rem;
+}

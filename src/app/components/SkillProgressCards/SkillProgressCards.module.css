@@ -1,0 +1,36 @@
+.cards {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.skillIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--accent-a3);
+  color: var(--accent-11);
+}
+
+.skillCard { min-width: 0; }
+.cardContent { flex: 1; min-width: 0; }
+.progressTrack { position: relative; }
+.progressTrack :global(.rt-ProgressRoot) { height: 1.25rem; }
+
+.percentage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  text-shadow: 0 1px 2px var(--bg);
+  pointer-events: none;
+}
+
+@media (max-width: 1120px) {
+  .cards { grid-template-columns: 1fr; }
+}
