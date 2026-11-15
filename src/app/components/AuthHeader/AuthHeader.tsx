@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
+import DefaultHeading from "../DefaultHeading/DefaultHeading";
 
 type AuthHeaderProps = {
   prefix?: string;
@@ -23,12 +24,12 @@ export default function AuthHeader({
         <Box
           style={{
             backgroundColor: "var(--accent-9)",
-            padding: "0 0.5rem",
+            padding: "0.5rem",
             display: "flex",
             alignItems: "center",
           }}
         >
-          <Image src="/logo.png" alt="Agon Logo" width={210} height={48} />
+          <DefaultHeading size="9" style={{ letterSpacing: "0.1em" }}>Agon</DefaultHeading>
         </Box>
       </Flex>
       <Text size="3" style={{ color: "var(--text-soft)" }}>

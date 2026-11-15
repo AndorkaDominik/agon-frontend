@@ -41,8 +41,6 @@ export default function RegisterPage() {
       })
     };
 
-    console.log('Submitting registration with data:', requestBody);
-
     try {
       const response = await postApiAuthRegister(requestBody);
 
