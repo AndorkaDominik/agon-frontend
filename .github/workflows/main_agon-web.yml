@@ -31,7 +31,7 @@ jobs:
           test -n "$NEXT_PUBLIC_API_URL" || { echo "Missing repository variable NEXT_PUBLIC_API_URL"; exit 1; }
           npm run build
         env:
-          NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
 
       - name: npm test
         run: npm run test --if-present
