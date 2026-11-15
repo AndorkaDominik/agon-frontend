@@ -29,7 +29,7 @@ export default function ProfileThemeSection({ initialColor }: { initialColor: st
         throw new Error(response.data.detail || response.data.title || "Unable to save your theme. Please try again.");
       }
 
-      const color = response.data.themeColor;
+      const color = response.data.themeColor ?? "grass";
       setThemeColor(color);
       setSelectedColor(color);
       setSaved(true);
