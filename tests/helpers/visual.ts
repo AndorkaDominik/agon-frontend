@@ -7,6 +7,18 @@ export const THEMES = [
 ];
 
 export async function screenshotPage(page: Page, name: string) {
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    await Promise.all(
+      Array.from(document.images)
+        .filter((image) => !image.complete)
+        .map((image) => image.decode().catch(() => undefined)),
+    );
+    await new Promise<void>((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+    });
+  });
+
   await expect(page).toHaveScreenshot(name, {
     fullPage: true,
     maxDiffPixelRatio: 0.02,
