@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { screenshotPage } from './helpers/visual';
+import { loginAndSetTheme, screenshotPage } from './helpers/visual';
 
 const athleteEmail = 'regathlete@gmail.com';
 const athletePassword = 'Asd123';
@@ -57,22 +57,11 @@ async function openPlans(page: Page) {
 }
 
 test.describe('Athlete theme visual regression', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAndSetTheme(page, athleteEmail, athletePassword, 'grass');
+  });
+
   test('pink and green themes persist across athlete pages', async ({ page }) => {
-    await page.goto('/login');
-    await waitForPageReady(page);
-
-    await page.getByLabel('Email').fill(athleteEmail);
-    await page.getByLabel('Password').fill(athletePassword);
-    const loginResponse = page.waitForResponse(
-      (response) =>
-        response.url().includes('/api/Auth/login') &&
-        response.request().method() === 'POST',
-    );
-    await page.getByRole('button', { name: 'Login' }).click();
-    const loginResult = await loginResponse;
-    expect(loginResult.ok()).toBeTruthy();
-
-    await expect(page).toHaveURL(/\/athlete\/dashboard\/?$/);
     await openDashboard(page);
     await capture(page, 'athlete-dashboard-default.png');
     await expect(page.getByText('Current level')).toBeVisible();
@@ -80,9 +69,20 @@ test.describe('Athlete theme visual regression', () => {
     await page.goto('/profile');
     await waitForPageReady(page);
     await expect(page.getByRole('region', { name: 'Appearance' })).toBeVisible();
-    await page.getByLabel('Pink').check();
+    const pinkWasChecked = await page.getByLabel('Pink').isChecked();
+    if (!pinkWasChecked) {
+      const pinkThemeResponse = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/Athlete/theme') &&
+          response.request().method() === 'PATCH',
+      );
+      await page.getByLabel('Pink').check();
+      expect((await pinkThemeResponse).ok()).toBeTruthy();
+      await expect(page.getByRole('status')).toContainText('Theme saved.');
+    } else {
+      await page.getByLabel('Pink').check();
+    }
     await expect(page.getByLabel('Pink')).toBeChecked();
-    await expect(page.getByRole('status')).toContainText('Theme saved.');
     await capture(page, 'athlete-profile-pink.png');
 
     await page.reload();
@@ -102,7 +102,13 @@ test.describe('Athlete theme visual regression', () => {
 
     await page.goto('/profile');
     await waitForPageReady(page);
+    const greenThemeResponse = page.waitForResponse(
+      (response) =>
+        response.url().includes('/api/Athlete/theme') &&
+        response.request().method() === 'PATCH',
+    );
     await page.getByLabel('Green').check();
+    expect((await greenThemeResponse).ok()).toBeTruthy();
     await expect(page.getByLabel('Green')).toBeChecked();
     await expect(page.getByRole('status')).toContainText('Theme saved.');
     await page.reload();

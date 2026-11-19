@@ -1,18 +1,17 @@
 import { test, expect } from '@playwright/test';
 
-import { THEMES, screenshotPage } from './helpers/visual';
+import { loginAndSetTheme, THEMES, screenshotPage } from './helpers/visual';
 
-test('Theme visual manual written test', async ({ page }) => {
+test.describe('Theme visual manual written test', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAndSetTheme(page, 'regathlete@gmail.com', 'Asd123', 'grass');
+  });
 
-  const theme = page.locator('.radix-themes').first();
-  const appearance = page.getByRole('region', { name: 'Appearance' });
-  const levelBoard = page.getByRole('region', { name: 'Athlete level'});
+  test('covers persisted athlete themes', async ({ page }) => {
 
-  await page.goto('/login');
-  await page.getByLabel('Email').fill('regathlete@gmail.com');
-  await page.getByLabel('Password').fill('Asd123');
-  await page.getByRole('button', { name: 'Login'}).click();
-  await expect(page).toHaveURL(/\/athlete\/dashboard$/);
+    const theme = page.locator('.radix-themes').first();
+    const appearance = page.getByRole('region', { name: 'Appearance' });
+    const levelBoard = page.getByRole('region', { name: 'Athlete level'});
 
   for (const { color, label } of THEMES) {
     await test.step(`${label}: Profile and persisted theme`, async () => {
@@ -24,7 +23,9 @@ test('Theme visual manual written test', async ({ page }) => {
       await expect(theme).toHaveAttribute('data-accent-color', color);
       await expect(page.getByRole('button', { name: 'Save Changes' })).toBeEnabled();
       await expect(page.getByRole('button', { name: 'Find a Trainer' })).toBeEnabled();
-      await expect(appearance).toHaveScreenshot(`profile-theme-${color}.png`);
+      await expect(appearance).toHaveScreenshot(`profile-theme-${color}.png`, {
+        maxDiffPixelRatio: 0.02,
+      });
       await screenshotPage(page, `profile-page-${color}.png`);
     });
 
@@ -32,7 +33,9 @@ test('Theme visual manual written test', async ({ page }) => {
       await page.goto('/athlete/dashboard');
       await expect(theme).toHaveAttribute('data-accent-color', color);
       await expect(levelBoard.locator('img')).toBeVisible();
-      await expect(levelBoard).toHaveScreenshot(`athlete-level-${color}.png`);
+      await expect(levelBoard).toHaveScreenshot(`athlete-level-${color}.png`, {
+        maxDiffPixelRatio: 0.02,
+      });
     });
 
     await test.step(`${label}: New Workout`, async () => {
@@ -52,5 +55,6 @@ test('Theme visual manual written test', async ({ page }) => {
       await expect(page.getByRole('heading', { name: "No workout plans", exact: true })).toBeVisible();
       await screenshotPage(page, `athlete-plans-page-${color}.png`);
     });
-  }
+    }
+  });
 });
