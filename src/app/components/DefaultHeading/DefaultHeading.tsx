@@ -11,6 +11,7 @@ export default function DefaultHeading({ children, size = "9", style, ...rest }:
       size={size}
       style={{
         textTransform: "uppercase",
+        fontFamily: "var(--font-barlow-condensed), 'Barlow Condensed', sans-serif",
         ...style,
       }}
       {...rest}
