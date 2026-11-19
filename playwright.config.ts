@@ -78,8 +78,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command:
-      'npm run dev-https -- --hostname 0.0.0.0 --experimental-https-key certificates\\localhost-key.pem --experimental-https-cert certificates\\localhost.pem',
+    command: 'npm run dev-https -- --hostname 0.0.0.0 --port 3000 --experimental-https-key certificates/localhost-key.pem --experimental-https-cert certificates/localhost.pem',
     url: 'https://localhost:3000',
     ignoreHTTPSErrors: true,
     reuseExistingServer: !process.env.CI,

@@ -8,6 +8,8 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -17,6 +19,12 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Generate localhost HTTPS certificate
+      run: |
+        mkdir -p certificates
+        openssl req -x509 -newkey rsa:2048 -nodes -days 1 \
+          -keyout certificates/localhost-key.pem \
+          -out certificates/localhost.pem
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4
