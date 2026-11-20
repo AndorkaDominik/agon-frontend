@@ -21,6 +21,7 @@ export async function loginAndSetTheme(
   password: string,
   themeColor: 'grass' | 'pink',
 ) {
+  await page.clock.setFixedTime(new Date('2026-11-19T12:00:00Z'));
   await page.goto('/login');
   await expect(page.locator('body')).toBeVisible();
   await page.getByLabel('Email').fill(email);
